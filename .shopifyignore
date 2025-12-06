@@ -1,0 +1,13 @@
+package.json
+package-lock.json
+scss/*
+.gitignore
+.prettierignore
+.prettierrc.json
+.theme-check.yml
+.vscode/*
+*.md
+translation.yml
+node_modules
+.git/*
+.github/*
