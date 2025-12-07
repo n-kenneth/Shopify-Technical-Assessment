@@ -96,7 +96,7 @@
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }} class="product__price">
                   <span class="product__price-min">
                     {% if product.price_min != product.price_max %}From {% endif %}
-                    {{ product.price_min | money }}</span>
+                    {{ product.price_min | money_without_trailing_zeros }}</span>
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
