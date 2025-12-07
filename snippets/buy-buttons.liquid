@@ -92,7 +92,7 @@
               {%- endif -%}
             </span>&nbsp;-&nbsp;
             <span class="product__active-price">
-              {{ product.selected_or_first_available_variant.price | money }}
+              {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}
             </span>
           </button>
           {%- if show_dynamic_checkout -%}

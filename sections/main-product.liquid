@@ -26,20 +26,6 @@
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
 
-  {%- style -%}
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-    }
-
-    @media screen and (min-width: 750px) {
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
-        padding-bottom: {{ section.settings.padding_bottom }}px;
-      }
-    }
-  {%- endstyle -%}
-
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
   {%- if product.quantity_price_breaks_configured? -%}
@@ -92,7 +78,7 @@
                 {% render block %}
               {%- when 'text' -%}
                 <p
-                  class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                  class="product__text product__vendor inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
                   {{ block.shopify_attributes }}
                 >
                   {{- block.settings.text -}}
@@ -107,16 +93,8 @@
                   </a>
                 </div>
               {%- when 'price' -%}
-                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-                  {%- render 'price',
-                    product: product,
-                    use_variant: true,
-                    show_badges: true,
-                    price_class: 'price--large'
-                  -%}
-                        <span class="product__price-min">
-                    from {{ product.price_min | money }}
-                  </span>
+                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }} class="product__price">
+                  <span class="product__price-min">From {{ product.price_min | money }}</span>
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -489,6 +467,15 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                
+                {%  if product.metafields.custom.delivery_estimate %}
+                  <div class="product__delivery-estimate">{{ product.metafields.custom.delivery_estimate | metafield_tag  }}</div>
+                {% endif %}
+
+                {% if product.metafields.custom.recommended_products %}
+                  {% render 'product-recommendations', recommendations: product.metafields.custom.recommended_products %}
+                {% endif %}
+
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">

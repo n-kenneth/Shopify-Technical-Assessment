@@ -1,0 +1,55 @@
+{% liquid
+  assign title = recommendations.value.title | default: 'You may also like'
+  assign products = recommendations.value.products
+%}
+
+<div class="product__recommendations">
+    <h3 class="product__recommendations-title">{{ title }}</h3>
+    <div class="product__recommendations-list">
+    {% for product in products.value %}
+        <div class="product__recommendations-item">
+            <div class="product-card">
+                <div class="product-card__image">
+                    <a href="{{ product.url }}">
+                        <picture>
+                            <source
+                            srcset="{{ product.featured_image | image_url: width: 232, height: 306, crop: 'center' }} 1x,
+                                {{ product.featured_image | image_url: width: 464, height: 612, crop: 'center' }} 2x
+                            "
+                            media="(min-width: 750px)"
+                            >
+                            <source
+                                srcset="{{ product.featured_image | image_url: width: 164, height: 220, crop: 'center' }} 1x,
+                                {{ product.featured_image | image_url: width: 328, height: 440, crop: 'center' }} 2x
+                                "
+                            >
+                            <img
+                                src="{{ product.featured_image | image_url: width: 232, height: 306, crop: 'center' }}"
+                                alt="{{ product.title | escape }}"
+                                width="232"
+                                height="306"
+                                loading="lazy"
+                            >
+                        </picture>
+                    </a>
+                </div>
+                <div class="product-card__title">
+                    <h4>
+                        <a href="{{ product.url }}">
+                            {{ product.title }}
+                        </a>
+                    </h4>
+                    <a href="/" class="product-card__wishlist-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                            <path d="M11.4319 1.35913C11.1386 1.04148 10.7905 0.7895 10.4074 0.61758C10.0242 0.445666 9.6135 0.357178 9.19872 0.357178C8.78394 0.357178 8.37324 0.445666 7.99008 0.61758C7.60692 0.7895 7.25874 1.04148 6.96552 1.35913L6.357 2.01805L5.74848 1.35913C5.15623 0.717804 4.35294 0.357511 3.51534 0.357511C2.67774 0.357511 1.87445 0.717804 1.28219 1.35913C0.689914 2.00045 0.357178 2.87028 0.357178 3.77724C0.357178 4.68421 0.689914 5.55402 1.28219 6.19536L1.89071 6.85426L6.357 11.6905L10.8233 6.85426L11.4319 6.19536C11.7252 5.87783 11.9579 5.50087 12.1167 5.08601C12.2755 4.67107 12.3572 4.22636 12.3572 3.77724C12.3572 3.32813 12.2755 2.88341 12.1167 2.4685C11.9579 2.0536 11.7252 1.67662 11.4319 1.35913Z" stroke="#010101" stroke-width="0.714286"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="product-card__price">
+                    <span>{{ product.price | money_without_currency }}</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>

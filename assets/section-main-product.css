@@ -288,10 +288,6 @@ a.product__text {
 }
 
 @media screen and (min-width: 750px) {
-  .product__info-container {
-    max-width: 60rem;
-  }
-
   .product__info-container .price--on-sale .price-item--regular {
     font-size: 1.6rem;
   }
@@ -361,10 +357,6 @@ a.product__text {
 
 .product-form__quantity-top .form__label {
   margin-bottom: 1.2rem;
-}
-
-.product-form__buttons {
-  max-width: 44rem;
 }
 
 .product--no-media .product__info-container > modal-opener {
