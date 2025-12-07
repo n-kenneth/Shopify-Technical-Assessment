@@ -1,0 +1,87 @@
+<div class="product-customise">
+    <div class="product-customise__container">
+        <div class="product-customise__content">
+            <div class="product-customise__header">
+            <span class="product-customise__small-title">{{ section.settings.small_title }}</span>
+            <h2 class="product-customise__large-title">{{ section.settings.large_title | newline_to_br }}</h2>
+            </div>
+
+            <div class="product-customise__description">
+            <p class="product-customise__description-text">{{ section.settings.description | newline_to_br }}</p>
+            <a href="{{ section.settings.button_link }}" class="product-customise__button">
+                {{- section.settings.button_text -}}
+            </a>
+            </div>
+        </div>
+
+        <div class="product-customise__image">
+            <div class="product-customise__image-wrapper">
+                <picture>
+                    <source
+                    srcset="
+                        {{ section.settings.image | image_url: width: 490, height: 666, crop: 'center' }} 1x,
+                        {{ section.settings.image | image_url: width: 980, height: 1332, crop: 'center' }} 2x
+                    "
+                    media="(min-width: 750px)"
+                    >
+                    <source srcset="{{ section.settings.image | image_url: width: 323, height: 439, crop: 'center' }} 1x, 
+                    {{ section.settings.image | image_url: width: 646, height: 878, crop: 'center' }} 2x">
+                    <img
+                        src="{{ section.settings.image | image_url: width: 490, height: 666, crop: 'center' }}"
+                        alt="{{ section.settings.image.alt | escape }}"
+                        width="490"
+                        height="666"
+                        loading="lazy"
+                    >
+                </picture>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Product Customise",
+    "settings": [
+        {
+            "type": "text",
+            "id": "small_title",
+            "label": "Small",
+            "default": "Customise"
+        },
+        {
+            "type": "textarea",
+            "id": "large_title",
+            "label": "Large Title",
+            "default": "Add your\npersonal touch"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Create your dream engagement ring with our Bespoke Ring Builder. Tailor each element to suit your personal preferences."
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Customise"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+        ],
+        "presets": [
+        {
+            "name": "Product Customise"
+        }
+    ]
+}
+{% endschema %}

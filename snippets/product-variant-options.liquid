@@ -95,8 +95,17 @@
       {{ input_dataset }}
     >
     <label for="{{ input_id }}">
-      {{ value -}}
-      {{ label_unavailable }}
+      {% if option.name == 'Finish' %}
+        {% assign finish_image = value | downcase | split: ' ' | join: '-' | append: '.png' %}
+        <picture>
+          <source srcset="{{ finish_image | file_url | append: '?width=120' }}" media="(min-width: 1025px)">
+          <source srcset="{{ finish_image | file_url | append: '?width=80' }}" media="(max-width: 1024px)">
+          <img src="{{ finish_image | file_url | append: '?width=116' }}" alt="{{ value }}" width="116" height="154">
+        </picture>
+      {% else %}
+        {{ value -}}
+        {{ label_unavailable }}
+      {% endif %}
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
     <option

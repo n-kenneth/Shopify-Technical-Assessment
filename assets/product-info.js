@@ -201,6 +201,12 @@ if (!customElements.get('product-info')) {
             window.variantStrings.soldOut
           );
 
+          const variantPrice = html.querySelector('.product__active-price').textContent;
+          document.querySelector('.product__active-price').textContent = variantPrice;
+
+          console.log('variant-changed');
+          this.variantSelectors.dispatchEvent(new CustomEvent('variant-changed', { bubbles: true, detail: { variant } }));
+
           publish(PUB_SUB_EVENTS.variantChange, {
             data: {
               sectionId: this.sectionId,

@@ -47,6 +47,17 @@
   title="{{ value }}"
   class="swatch-input__label{% if shape == 'square' %} swatch-input__label--square{% endif %}"
 >
+  <span class="swatch-input__short-value">
+    {% liquid 
+      assign value_formatted = value | upcase
+      if value_formatted == 'PLATINUM'
+        assign value_formatted = 'PL'
+      else
+        assign value_formatted = value_formatted | split: ' ' | first
+      endif
+    %}
+    {{ value_formatted }}
+  </span>
   {% render 'swatch', swatch: swatch, shape: shape %}
   {{ help_text }}
 </label>

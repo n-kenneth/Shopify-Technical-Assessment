@@ -1,0 +1,100 @@
+<div class="product-highlight">
+    <div class="product-highlight__container">
+    <div class="product-highlight__content">
+        <div class="product-highlight__header">
+        <span class="product-highlight__small-title">{{ section.settings.small_title }}</span>
+        <h2 class="product-highlight__large-title">{{ section.settings.large_title | newline_to_br }}</h2>
+        </div>
+
+        <div class="product-highlight__image">
+        <div class="product-highlight__image-wrapper">
+            <picture>
+            <source
+                srcset="{{ section.settings.image | image_url: width: 690, height: 388, crop: 'center' }} 1x, {{ section.settings.image | image_url: width: 1380, height: 778, crop: 'center' }} 2x"
+                media="(min-width: 750px)"
+            >
+            <source srcset="{{ section.settings.image | image_url: width: 460, height: 258, crop: 'center' }} 1x, {{ section.settings.image | image_url: width: 920, height: 516, crop: 'center' }} 2x">
+            </picture>
+            <img
+            src="{{ section.settings.image | image_url: width: 690, height: 388, crop: 'center' }}"
+            alt="{{ section.settings.image.alt | escape }}"
+            width="690"
+            height="388"
+            loading="lazy"
+            >
+        </div>
+
+        <div class="product-highlight__image-wrapper is-mobile-only">
+            <picture>
+            <source srcset="{{ section.settings.image_2 | image_url: width: 159, height: 210, crop: 'center' }} 1x, {{ section.settings.image_2 | image_url: width: 318, height: 420, crop: 'center' }} 2x">
+            <img
+                src="{{ section.settings.image_2 | image_url: width: 159, height: 210, crop: 'center' }}"
+                alt="{{ section.settings.image_2.alt | escape }}"
+                width="159"
+                height="210"
+                loading="lazy"
+            >
+            </picture>
+        </div>
+        </div>
+    </div>
+
+    <div class="product-highlight__block">
+        <div class="product-highlight__block-img is-desktop-only">
+        <div class="product-highlight__image-wrapper">
+            <picture>
+            <source srcset="{{ section.settings.image_3 | image_url: width: 318, height: 399, crop: 'center' }} 1x, {{ section.settings.image_3 | image_url: width: 636, height: 798, crop: 'center' }} 2x">
+            <img
+                src="{{ section.settings.image_3 | image_url: width: 318, height: 399, crop: 'center' }}"
+                alt="{{ section.settings.image_3.alt | escape }}"
+                width="318"
+                height="399"
+                loading="lazy"
+            >
+            </picture>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Product Highlight",
+    "settings": [
+        {
+            "type": "text",
+            "id": "small_title",
+            "label": "Small Title",
+            "default": "Behind The Ring"
+        },
+        {
+            "type": "text",
+            "id": "large_title",
+            "label": "Large Title",
+            "default": "Timeless Elegance"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image 2"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Our most coveted engagement ring silhouette. The Ceremonial Solitaire showcases a dazzling oval diamond in a minimal basket setting."
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Highlight"
+        }
+    ]
+}
+{% endschema %}
