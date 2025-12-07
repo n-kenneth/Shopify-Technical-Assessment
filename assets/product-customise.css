@@ -1,0 +1,111 @@
+.product-customise__container {
+  padding: 36px 20px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+@media (min-width: 1025px) {
+  .product-customise__container {
+    padding: 56px 120px;
+    max-width: 1440px;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 1025px) {
+  .product-customise__content {
+    width: 43.1666666667%;
+    flex: 0 0 auto;
+  }
+}
+.product-customise__image {
+  margin-bottom: 48px;
+}
+@media (min-width: 1025px) {
+  .product-customise__image {
+    width: 40.83%;
+    flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+}
+.product-customise__image-wrapper {
+  position: relative;
+  padding-bottom: 133.14%;
+}
+@media (min-width: 1025px) {
+  .product-customise__image-wrapper {
+    padding-bottom: 135.934%;
+  }
+}
+.product-customise__image-wrapper img {
+  display: block;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.product-customise__header {
+  margin-bottom: 20px;
+}
+@media (min-width: 1025px) {
+  .product-customise__header {
+    margin-bottom: 112px;
+  }
+}
+.product-customise__small-title {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 20px;
+}
+@media (min-width: 1025px) {
+  .product-customise__small-title {
+    margin-bottom: 28px;
+  }
+}
+.product-customise__large-title {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0;
+  margin: 0;
+}
+@media (min-width: 1025px) {
+  .product-customise__large-title {
+    font-size: 72px;
+    line-height: 80px;
+  }
+}
+@media (min-width: 1025px) {
+  .product-customise__description {
+    max-width: 284px;
+    margin-left: auto;
+  }
+}
+.product-customise__description-text {
+  font-family: Matter SQ TRIAL;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0;
+  margin: 0 0 40px;
+}
+.product-customise__button {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  text-decoration: none;
+  background-color: rgba(29, 15, 7, 0.02);
+  padding: 16px 37px;
+}

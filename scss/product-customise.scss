@@ -1,0 +1,115 @@
+@use 'mixins' as mixins;
+
+.product-customise {
+    &__container {
+        padding: 36px 20px;
+        display: flex;
+        flex-direction: column-reverse;
+
+        @media (min-width: 1025px) {
+            padding: 56px 120px;
+            max-width: 1440px;
+            margin: 0 auto;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__content {
+        @media (min-width: 1025px) {
+            width: 43.1666666667%;
+            flex: 0 0 auto;
+        }
+    }
+
+    &__image {
+        margin-bottom: 48px;
+
+        @media (min-width: 1025px) {
+            width: 40.83%;
+            flex: 0 0 auto;
+            margin-bottom: 0;
+        }
+    }
+
+
+    &__image-wrapper {
+        position: relative;
+        padding-bottom: 133.14%;
+        
+        @media (min-width: 1025px) {
+            padding-bottom: 135.934%;
+        }
+
+        img {
+            @include mixins.imageBase;
+        }
+    }
+
+    &__header {
+        margin-bottom: 20px;
+
+        @media (min-width: 1025px) {
+            margin-bottom: 112px;
+        }
+    }
+
+    &__small-title {
+        display: block;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 24px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        margin: 0 0 20px;
+
+        @media (min-width: 1025px) {
+            margin-bottom: 28px;
+        }
+    }
+
+    &__large-title {
+        font-weight: 400;
+        font-size: 32px;    
+        line-height: 40px;
+        letter-spacing: 0;
+        margin: 0;
+
+        @media (min-width: 1025px) {
+            font-size: 72px;
+            line-height: 80px;
+        }
+    }
+
+    &__description {
+        @media (min-width: 1025px) {
+            max-width: 284px;
+            margin-left: auto;
+        }
+    }
+
+
+    &__description-text {
+        font-family: Matter SQ TRIAL;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 28px;
+        letter-spacing: 0;
+        margin: 0 0 40px;
+    }
+
+    &__button {
+        display: inline-block;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 24px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        text-decoration: none;
+        background-color: rgba(29, 15, 7, 0.02);
+        padding: 16px 37px;
+    }
+
+}

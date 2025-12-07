@@ -1,16 +1,18 @@
+{{ 'product-customise.css' | asset_url | stylesheet_tag }}
+
 <div class="product-customise">
     <div class="product-customise__container">
         <div class="product-customise__content">
             <div class="product-customise__header">
-            <span class="product-customise__small-title">{{ section.settings.small_title }}</span>
-            <h2 class="product-customise__large-title">{{ section.settings.large_title | newline_to_br }}</h2>
+                <span class="product-customise__small-title">{{ section.settings.small_title }}</span>
+                <h2 class="product-customise__large-title">{{ section.settings.large_title | newline_to_br }}</h2>
             </div>
 
             <div class="product-customise__description">
-            <p class="product-customise__description-text">{{ section.settings.description | newline_to_br }}</p>
-            <a href="{{ section.settings.button_link }}" class="product-customise__button">
-                {{- section.settings.button_text -}}
-            </a>
+                <p class="product-customise__description-text">{{ section.settings.description | newline_to_br }}</p>
+                <a href="{{ section.settings.button_link }}" class="product-customise__button">
+                    {{- section.settings.button_text -}}
+                </a>
             </div>
         </div>
 
@@ -53,7 +55,7 @@
             "type": "textarea",
             "id": "large_title",
             "label": "Large Title",
-            "default": "Add your\npersonal touch"
+            "default": "Add your personal touch"
         },
         {
             "type": "textarea",

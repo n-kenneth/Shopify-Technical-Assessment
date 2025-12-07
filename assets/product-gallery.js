@@ -3,10 +3,27 @@ const initGallery = () => {
 
     if (!galleryEl) return;
 
-    const updatePrevArrow = (swiper) => {
-        const prevEl = swiper.navigation.prevEl;
+    const updateNavigation = (swiper) => {
+        const { prevEl, nextEl } = swiper.navigation;
+        const totalSlides = swiper.slides.length;
+        const isSingleSlide = totalSlides <= 1;
+
+        if (isSingleSlide) {
+            if (prevEl) {
+                prevEl.style.display = 'none';
+            }
+            if (nextEl) {
+                nextEl.style.display = 'none';
+            }
+            return;
+        }
+
         if (prevEl) {
             prevEl.style.display = swiper.realIndex === 0 ? 'none' : '';
+        } 
+
+        if (nextEl) {
+            nextEl.style.display = swiper.realIndex === totalSlides - 1 ? 'none' : '';
         }
     };
 
@@ -22,8 +39,8 @@ const initGallery = () => {
             type: 'fraction'
         },
         on: {
-            init: (swiper) => updatePrevArrow(swiper),
-            slideChange: (swiper) => updatePrevArrow(swiper)
+            init: (swiper) => updateNavigation(swiper),
+            slideChange: (swiper) => updateNavigation(swiper)
         }
     });
 

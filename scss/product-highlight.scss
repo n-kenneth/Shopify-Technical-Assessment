@@ -1,0 +1,139 @@
+@use 'mixins' as mixins;
+
+.product-highlight {
+    &__container {
+        padding: 32px 20px 36px;
+
+        @media (min-width: 1025px) {
+            padding: 56px 120px;
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &__content {
+        @media (min-width: 1025px) {
+            width: 57.5%;
+            flex: 0 0 auto;
+            margin-top: 48px;
+        }
+    }
+
+    &__header {
+        text-align: center;
+
+        @media (min-width: 1025px) {
+            text-align: left;
+        }
+    }
+
+
+    &__small-title {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 24px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        display: block;
+        margin: 0 0 19px;
+
+        @media (min-width: 1025px) {
+            margin-bottom: 28px;
+        }
+    }
+
+    &__large-title {
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: 0;
+        margin: 0 0 39px;
+
+        @media (min-width: 1025px) {
+            font-size: 56px;
+            line-height: 64px;
+            margin-bottom: 72px;
+        }
+    }
+
+    .is-desktop-only {
+        display: none;
+
+        @media (min-width: 1025px) {
+            display: block;
+        }
+    }
+
+    .is-mobile-only {
+        display: block;
+
+        @media (min-width: 1025px) {
+            display: none;
+        }
+    }
+
+    &__block {
+        @media (min-width: 1025px) {
+            width: 24%;
+            flex: 0 0 auto;
+        }
+    }
+
+    &__image-wrapper {
+        position: relative;
+        padding-bottom: 56.38%;
+
+        img {
+            @include mixins.imageBase;
+        }
+    }
+
+    &__block-img {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+
+        .product-highlight__image-wrapper {
+            padding-bottom: 62.69%;
+            width: 50%;
+            width: 100%;
+
+            @media (min-width: 1025px) {
+                padding-bottom: 133.34%;
+            }
+
+            &:last-child {
+                margin-top: 32px;
+
+                @media (min-width: 1025px) {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    &__block-content {
+        margin-top: 32px;
+
+        @media (min-width: 1025px) {
+            margin-top: 40px;
+        }
+
+        p {
+            margin: 0;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 28px;
+            letter-spacing: 0;
+            text-align: center;
+            color: var(--color-primary);
+
+            @media (min-width: 1025px) {
+                text-align: left;
+            }
+        }
+    }
+}
